@@ -19,7 +19,7 @@ def load_checkpoint(checkpoint_dir, model_name="checkpoint.pth", cuda_is_availab
 
     print(model_path)
 
-    if cuda_is_available:
+    if torch.cuda.is_available():
         checkpoint = torch.load(os.path.join(model_path, model_name))
     else:
         checkpoint = torch.load(os.path.join(model_path, model_name), map_location=torch.device('cpu'))
