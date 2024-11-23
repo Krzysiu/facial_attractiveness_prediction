@@ -33,7 +33,7 @@ def build_pred_transformations(params, convert_gray_to_rgb=False):
     if convert_gray_to_rgb:
         transform_list.append(transforms.Lambda(lambda img: img.convert('RGB')))
 
-    transform_list.append(transforms.RandomAffine(10, translate=(0.1, 0.1), scale=(0.9, 1.1), resample=Image.BICUBIC))
+    transform_list.append(transforms.RandomAffine(10, translate=(0.1, 0.1), scale=(0.9, 1.1), interpolation=transforms.InterpolationMode.BICUBIC))
     transform_list.append(transforms.Resize(params.img_shape))
 
     transform_list.append(transforms.ToTensor())
